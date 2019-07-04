@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="GenericActionView">
+        <attr format="enum" name="emptyGravity">
+            <enum name="center" value="0" />
+            <enum name="top" value="1" />
+            <enum name="bottom" value="2" />
+        </attr>
+        <attr format="string" name="emptyTitle" />
+        <attr format="color" name="emptyTitleTextColor" />
+        <attr format="string" name="emptyMessage" />
+        <attr format="color" name="emptyMessageTextColor" />
+        <attr format="string" name="emptyActionMessage" />
+        <attr format="color" name="emptyActionMessageTextColor" />
+        <attr format="string" name="emptySecondaryActionMessage" />
+        <attr format="color" name="emptySecondaryActionMessageTextColor" />
+        <attr format="reference" name="emptyDrawable" />
+        <attr format="color" name="emptyDrawableTint" />
+        <attr format="color" name="emptyBackgroundColor" />
+    </declare-styleable>
+
+    <declare-styleable name="GenericToggleView">
+        <attr format="string" name="toggleTitle" />
+        <attr format="string" name="toggleDesc" />
+    </declare-styleable>
+
+</resources>

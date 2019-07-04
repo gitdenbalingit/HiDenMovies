@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">HiMovies</string>
+
+
+
+
+
+    <!--FB Account Kit -->
+    <string name="FACEBOOK_APP_ID">2313674832291446</string>
+    <string name="ACCOUNT_KIT_CLIENT_TOKEN">488a70d5869d68b1ba20909308d88a4d</string>
+
+
+
+
+
+</resources>

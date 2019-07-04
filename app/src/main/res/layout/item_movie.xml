@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/movie_item_holder"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        >
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/movie_item_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:foreground="@drawable/selectable_background"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp"
+            android:layout_marginRight="@dimen/dp_6"
+            app:cardUseCompatPadding="true"
+            >
+
+        <ImageView
+                android:layout_alignParentTop="true"
+                android:id="@+id/movie_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/movie_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/movie_item_card"
+            android:layout_below="@id/movie_item_card"
+            android:gravity="start"
+            android:maxLines="2"
+            android:minLines="2"
+            android:layout_alignStart="@id/movie_item_card"
+            android:layout_alignEnd="@id/movie_item_card"
+            android:layout_alignRight="@id/movie_item_card"
+            android:paddingBottom="@dimen/dp_10"
+            android:paddingLeft="@dimen/dp_5"
+            android:paddingRight="@dimen/dp_5"
+            android:textColor="@color/primary_text_color"
+            android:textSize="@dimen/sp_13"
+
+            />
+
+
+</RelativeLayout>
