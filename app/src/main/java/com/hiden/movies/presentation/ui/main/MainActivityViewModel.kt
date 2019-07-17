@@ -17,7 +17,8 @@ class MainActivityViewModel @Inject constructor(
 
     private val getUserUseCase: GetUserUseCase,
     private val getUserStatusesUseCase: GetUserStatusesUseCase,
-    private val searchTweetUseCase: SearchTweetUseCase
+    private val searchTweetUseCase: SearchTweetUseCase,
+    private val postStatusUseCase: PostStatusUseCase
 ) : BaseViewModel() {
 
 
@@ -58,6 +59,15 @@ class MainActivityViewModel @Inject constructor(
                 .subscribe(
                         { Log.v("PIA","Sucess search - "+it.statuses[0].text)},
                         {Log.v("PIA","Error  search- "+it.localizedMessage)}
+                ))
+    }
+
+    fun postStatus(){
+        addToDisposables(postStatusUseCase
+                .getObservable("Hi DEN")
+                .subscribe(
+                        { Log.v("PIA","Sucess post - "+it.text)},
+                        {Log.v("PIA","Error  post- "+it.localizedMessage)}
                 ))
     }
 

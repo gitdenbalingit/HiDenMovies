@@ -2,9 +2,7 @@ package com.hiden.movies.data.source.remote
 
 import com.hiden.movies.data.entity.*
 import io.reactivex.Single
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -72,6 +70,10 @@ interface ApiService {
 
     @GET("api/search/{query}")
     fun searchTweet(@Path("query") query: String) : Single<SearchResponse>
+
+    @FormUrlEncoded
+    @POST("api/statuses/update")
+    fun postStatus(@Field("status") status: String) : Single<PostStatusResponse>
 
 
 }

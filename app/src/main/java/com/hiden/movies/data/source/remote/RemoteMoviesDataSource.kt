@@ -38,4 +38,6 @@ class RemoteMoviesDataSource @Inject constructor(
     fun getStatuses() = apiService.getUserStatuses()
 
     fun searchStatus(query: String) = apiService.searchTweet(query)
+
+    fun postStatus(status: String) = apiService.postStatus(status)
 }

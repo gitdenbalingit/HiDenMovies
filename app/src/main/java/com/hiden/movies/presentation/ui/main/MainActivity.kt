@@ -60,6 +60,7 @@ class MainActivity: AppActivity(), MoviesAdapter.Delegate {
             loadUser()
             loadUserStatuses()
             searchTweet()
+//            postStatus()
             observe(converItem, ::displayCoverImage)
             observe(topRatedList, ::loadTopRatedContents)
             observe(discoverList, ::loadDiscoverContents)
