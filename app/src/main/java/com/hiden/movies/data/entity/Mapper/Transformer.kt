@@ -2,8 +2,10 @@ package com.hiden.movies.data.entity.Mapper
 
 import com.hiden.movies.data.entity.MovieDetailResponse
 import com.hiden.movies.data.entity.MovieResponse
+import com.hiden.movies.data.entity.UserResponse
 import com.hiden.movies.presentation.model.MovieDataView
 import com.hiden.movies.presentation.model.MovieDetailView
+import com.hiden.movies.presentation.model.UserDataView
 
 
 /*******************************
@@ -54,4 +56,11 @@ fun MovieDetailResponse.toDataView(): MovieDetailView = MovieDetailView(
 fun MovieDetailResponse.Genre.toDataView(): MovieDetailView.GenreDataView = MovieDetailView.GenreDataView(
     name = name,
     id = id
+)
+
+fun UserResponse.toDataView(): UserDataView = UserDataView(
+        name = name,
+        profile_background_image_url = profile_background_image_url,
+        profile_image_url = profile_image_url,
+        description = description
 )

@@ -17,7 +17,7 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.hiden.movies.presentation.ui.main.MainActivity"
+            android:name=".presentation.ui.profile.UserProfileActivity"
             android:label="@string/app_name"
             android:theme="@style/AppThemeNoActionBar">
             <intent-filter>
@@ -34,6 +34,10 @@
         <activity
                 android:name="com.hiden.movies.presentation.ui.detail.DetailActivity"
                 android:theme="@style/AppThemeNoActionBar" />
+
+        <!--<activity-->
+            <!--android:name="com.hiden.movies.presentation.ui.profile.UserProfileActivity"-->
+            <!--android:theme="@style/AppThemeNoActionBar" />-->
 
         <activity android:name="com.facebook.accountkit.ui.AccountKitActivity" />
 

@@ -6,6 +6,7 @@ import com.hiden.movies.presentation.di.ViewModelFactory
 import com.hiden.movies.presentation.di.ViewModelKey
 import com.hiden.movies.presentation.ui.detail.DetailActivityViewModel
 import com.hiden.movies.presentation.ui.main.MainActivityViewModel
+import com.hiden.movies.presentation.ui.profile.UserProfileViewModel
 import com.hiden.movies.presentation.ui.search.SearchMovieViewModel
 import dagger.Binds
 import dagger.Module
@@ -31,6 +32,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(DetailActivityViewModel::class)
     abstract fun bindDetailActivityViewModel(viewModel: DetailActivityViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(UserProfileViewModel::class)
+    abstract fun bindUserProfileViewModel(viewModel: UserProfileViewModel): ViewModel
 
 
 }
