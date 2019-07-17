@@ -62,4 +62,13 @@ interface ApiService {
     ): Single<PagedResponse<MovieResponse>>
 
 
+    //Wizeline
+
+    @GET("api/user")
+    fun getUser() : Single<UserResponse>
+
+    @GET("api/statuses/user_timeline")
+    fun getUserStatuses() : Single<StatusesResponse>
+
+
 }
