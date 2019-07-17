@@ -58,6 +58,8 @@ class MainActivity: AppActivity(), MoviesAdapter.Delegate {
     private fun observeViewModel(){
         withViewModel<MainActivityViewModel>(viewModelFactory) {
             loadUser()
+            loadUserStatuses()
+            searchTweet()
             observe(converItem, ::displayCoverImage)
             observe(topRatedList, ::loadTopRatedContents)
             observe(discoverList, ::loadDiscoverContents)

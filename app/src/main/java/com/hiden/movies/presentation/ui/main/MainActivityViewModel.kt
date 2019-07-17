@@ -14,7 +14,10 @@ class MainActivityViewModel @Inject constructor(
     private val loadDiscoverMoviesUseCase: LoadDiscoverMoviesUseCase,
     private val loadTopRatedMoviesUseCase: LoadTopRatedMoviesUseCase,
     private val loadUpcomingMoviesUseCase: LoadUpcomingMoviesUseCase,
-    private val getUserUseCase: GetUserUseCase
+
+    private val getUserUseCase: GetUserUseCase,
+    private val getUserStatusesUseCase: GetUserStatusesUseCase,
+    private val searchTweetUseCase: SearchTweetUseCase
 ) : BaseViewModel() {
 
 
@@ -37,6 +40,24 @@ class MainActivityViewModel @Inject constructor(
                 .subscribe(
                         { Log.v("PIA","Sucess - "+it.name)},
                         {Log.v("PIA","Error - "+it.localizedMessage)}
+                ))
+    }
+
+    fun loadUserStatuses(){
+        addToDisposables(getUserStatusesUseCase
+                .getObservable(null)
+                .subscribe(
+                        { Log.v("PIA","Sucess status - "+it[0].text)},
+                        {Log.v("PIA","Error  statuts- "+it.localizedMessage)}
+                ))
+    }
+
+    fun searchTweet(){
+        addToDisposables(searchTweetUseCase
+                .getObservable("hello")
+                .subscribe(
+                        { Log.v("PIA","Sucess search - "+it.statuses[0].text)},
+                        {Log.v("PIA","Error  search- "+it.localizedMessage)}
                 ))
     }
 

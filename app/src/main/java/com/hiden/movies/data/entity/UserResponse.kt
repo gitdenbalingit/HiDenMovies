@@ -72,7 +72,7 @@ data class UserResponse(
         @SerializedName("profile_sidebar_fill_color")
         val profile_sidebar_fill_color: String,
         @SerializedName("profile_text_color")
-        val profile_text_color: Int,
+        val profile_text_color: String,
         @SerializedName("profile_use_background_image")
         val profile_use_background_image: Boolean,
         @SerializedName("has_extended_profile")

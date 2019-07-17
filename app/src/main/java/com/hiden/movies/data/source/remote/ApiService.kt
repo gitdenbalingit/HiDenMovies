@@ -68,7 +68,10 @@ interface ApiService {
     fun getUser() : Single<UserResponse>
 
     @GET("api/statuses/user_timeline")
-    fun getUserStatuses() : Single<StatusesResponse>
+    fun getUserStatuses() : Single<List<StatusesResponse>>
+
+    @GET("api/search/{query}")
+    fun searchTweet(@Path("query") query: String) : Single<SearchResponse>
 
 
 }
