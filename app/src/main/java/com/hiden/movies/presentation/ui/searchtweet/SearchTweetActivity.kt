@@ -2,6 +2,7 @@ package com.hiden.movies.presentation.ui.searchtweet
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.util.TypedValue
 import android.widget.*
 import androidx.lifecycle.ViewModelProvider
@@ -114,6 +115,6 @@ class SearchTweetActivity: AppActivity(), SearchTweetAdapter.Delegate {
 
 
     override fun onStatusItemClicked(userStatusDataView: UserStatusDataView) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.v("PIA" , "click - "+userStatusDataView.text)
     }
 }

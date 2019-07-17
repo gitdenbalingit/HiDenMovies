@@ -11,6 +11,7 @@ import com.hiden.movies.presentation.common.ext.observe
 import com.hiden.movies.presentation.common.ext.withViewModel
 import com.hiden.movies.presentation.model.UserDataView
 import com.hiden.movies.presentation.model.UserStatusDataView
+import com.hiden.movies.presentation.ui.post.PostStatusActivity
 import com.hiden.movies.presentation.ui.searchtweet.SearchTweetActivity
 import kotlinx.android.synthetic.main.activity_user_profile.*
 import org.jetbrains.anko.intentFor
@@ -30,8 +31,12 @@ class UserProfileActivity: AppActivity(), UserStatusAdapter.Delegate {
         setupStatus()
         observerViewModel()
 
-        profile_avatar.setOnClickListener {
+        search.setOnClickListener {
             startActivity(intentFor<SearchTweetActivity>())
+        }
+
+        post.setOnClickListener {
+            startActivity(intentFor<PostStatusActivity>())
         }
 
     }
@@ -43,11 +48,18 @@ class UserProfileActivity: AppActivity(), UserStatusAdapter.Delegate {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        withViewModel<UserProfileViewModel>(viewModelFactory) {
+            loadUserStatuses()
+        }
+    }
+
 
     private fun observerViewModel(){
         withViewModel<UserProfileViewModel>(viewModelFactory) {
             loadUser()
-            loadUserStatuses()
+//            loadUserStatuses()
             observe(userData, ::loadUserInfo)
             observe<Result<List<UserStatusDataView>>, LiveData<Result<List<UserStatusDataView>>>>(statusesData, ::loadUserStatuses)
         }
@@ -61,6 +73,10 @@ class UserProfileActivity: AppActivity(), UserStatusAdapter.Delegate {
             GlideApp.with(this)
                     .load(user.profile_image_url)
                     .into(profile_avatar)
+
+            GlideApp.with(this)
+                    .load(user.profile_background_image_url)
+                    .into(cover_photo)
         }
     }
 

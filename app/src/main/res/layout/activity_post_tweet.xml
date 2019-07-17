@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:id="@+id/toolbar"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:background="@color/main">
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hi there!"
+        android:textStyle="bold"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="60dp"
+        android:textSize="40sp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Type your new tweet"
+        android:textStyle="normal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:textSize="26sp" />
+
+    <EditText
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_margin="20dp"
+        android:maxLength="14"
+        android:layout_height="wrap_content" />
+
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/characters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Remaining characters"
+        android:textStyle="normal"
+        android:layout_marginLeft="20dp"
+        android:textSize="12sp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="right"
+        android:layout_marginRight="20dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/post"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Post"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

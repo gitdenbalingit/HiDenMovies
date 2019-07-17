@@ -6,6 +6,7 @@ import com.hiden.movies.presentation.di.ViewModelFactory
 import com.hiden.movies.presentation.di.ViewModelKey
 import com.hiden.movies.presentation.ui.detail.DetailActivityViewModel
 import com.hiden.movies.presentation.ui.main.MainActivityViewModel
+import com.hiden.movies.presentation.ui.post.PostStatusViewModel
 import com.hiden.movies.presentation.ui.profile.UserProfileViewModel
 import com.hiden.movies.presentation.ui.search.SearchMovieViewModel
 import com.hiden.movies.presentation.ui.searchtweet.SearchTweetViewModel
@@ -43,6 +44,12 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(SearchTweetViewModel::class)
     abstract fun bindSearchTweetViewModel(viewModel: SearchTweetViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PostStatusViewModel::class)
+    abstract fun bindPostStatusViewModel(viewModel: PostStatusViewModel): ViewModel
+
 
 
 }

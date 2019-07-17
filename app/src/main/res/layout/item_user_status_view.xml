@@ -49,6 +49,11 @@
             android:layout_alignParentRight="true"
             android:text="Sample Data" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/view_divider_thin_color"/>
+
 
     </RelativeLayout>
 

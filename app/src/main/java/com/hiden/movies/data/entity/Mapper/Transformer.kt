@@ -70,7 +70,8 @@ fun StatusesResponse.toDataView() : UserStatusDataView = UserStatusDataView(
         text = text,
         user_name = this.user.screen_name,
         retweeted = retweeted,
-        is_quote_status = is_quote_status
+        is_quote_status = is_quote_status,
+        image_url = ""
 )
 
 fun SearchStatusResponse.toDataView() : UserStatusDataView = UserStatusDataView(
@@ -79,5 +80,6 @@ fun SearchStatusResponse.toDataView() : UserStatusDataView = UserStatusDataView(
         text = text,
         user_name = this.user.screen_name,
         retweeted = retweeted,
-        is_quote_status = is_quote_status
+        is_quote_status = is_quote_status,
+        image_url = ""
 )

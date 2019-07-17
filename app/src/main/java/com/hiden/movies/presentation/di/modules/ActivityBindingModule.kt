@@ -5,6 +5,8 @@ import com.hiden.movies.presentation.ui.detail.DetailActivity
 import com.hiden.movies.presentation.ui.detail.DetailActivityModule
 import com.hiden.movies.presentation.ui.main.MainActivity
 import com.hiden.movies.presentation.ui.main.MainActivityModule
+import com.hiden.movies.presentation.ui.post.PostStatusActivity
+import com.hiden.movies.presentation.ui.post.PostStatusActivityModule
 import com.hiden.movies.presentation.ui.profile.UserProfileActivity
 import com.hiden.movies.presentation.ui.profile.UserProfileActivityModule
 import com.hiden.movies.presentation.ui.search.SearchMovieActivity
@@ -36,5 +38,10 @@ internal abstract class ActivityBindingModule {
     @PerActivity
     @ContributesAndroidInjector(modules = [SearchTweetActivityModule::class])
     abstract fun bindSearchTweetActivity(): SearchTweetActivity
+
+
+    @PerActivity
+    @ContributesAndroidInjector(modules = [PostStatusActivityModule::class])
+    abstract fun bindPostStatusActivity(): PostStatusActivity
 
 }

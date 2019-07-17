@@ -7,5 +7,6 @@ data class UserStatusDataView(
         val text : String,
         val user_name : String,
         val retweeted : Boolean = false,
-        val is_quote_status : Boolean = false
+        val is_quote_status : Boolean = false,
+        val image_url: String?
         )

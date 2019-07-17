@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import com.hiden.movies.R
 import com.hiden.movies.presentation.common.adapter.SearchTweetAdapter
 import com.hiden.movies.presentation.model.UserStatusDataView
-import kotlinx.android.synthetic.main.item_user_status_view.view.*
+import kotlinx.android.synthetic.main.item_search_tweet.view.*
 
 class SearchTweetItemViewHolder(
         itemView: View,
@@ -27,7 +27,9 @@ class SearchTweetItemViewHolder(
 
     init {
 
-        userStatusDataView?.let { callback.onStatusItemClicked(it) }
+        itemView.setOnClickListener {
+            userStatusDataView?.let { callback.onStatusItemClicked(it) }
+        }
     }
 
 
@@ -41,13 +43,6 @@ class SearchTweetItemViewHolder(
         itemView.retweeted.text = "Retweeted: Yes".takeIf { item.retweeted } ?: "Retweeted: No"
         itemView.quote.text = "Quote status: Yes".takeIf { item.is_quote_status } ?: "Quote status: No"
         itemView.date.text = item.created_at
-
-
-//        GlideApp.with(itemView)
-//                .load(IMAGE_BASE_URL_154 + item.posterPath)
-////            .placeholder(R.drawable.bg_rounded_corner_2dp)
-////            .error(R.drawable.ic_broken_image)
-//                .into(itemView.movie_image)
 
     }
 

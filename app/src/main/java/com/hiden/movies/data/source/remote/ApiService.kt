@@ -6,10 +6,6 @@ import retrofit2.http.*
 
 interface ApiService {
 
-    /***
-     *
-     * HMLET
-     */
     @GET("search/movie")
     fun searchMovie(
         @Query("query") query: String,

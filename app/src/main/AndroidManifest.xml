@@ -39,6 +39,10 @@
             android:name=".presentation.ui.searchtweet.SearchTweetActivity"
             android:theme="@style/AppThemeNoActionBar" />
 
+        <activity
+            android:name=".presentation.ui.post.PostStatusActivity"
+            android:theme="@style/AppThemeNoActionBar" />
+
         <activity android:name="com.facebook.accountkit.ui.AccountKitActivity" />
 
 
