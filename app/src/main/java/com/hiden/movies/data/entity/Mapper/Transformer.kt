@@ -1,11 +1,10 @@
 package com.hiden.movies.data.entity.Mapper
 
-import com.hiden.movies.data.entity.MovieDetailResponse
-import com.hiden.movies.data.entity.MovieResponse
-import com.hiden.movies.data.entity.UserResponse
+import com.hiden.movies.data.entity.*
 import com.hiden.movies.presentation.model.MovieDataView
 import com.hiden.movies.presentation.model.MovieDetailView
 import com.hiden.movies.presentation.model.UserDataView
+import com.hiden.movies.presentation.model.UserStatusDataView
 
 
 /*******************************
@@ -63,4 +62,22 @@ fun UserResponse.toDataView(): UserDataView = UserDataView(
         profile_background_image_url = profile_background_image_url,
         profile_image_url = profile_image_url,
         description = description
+)
+
+fun StatusesResponse.toDataView() : UserStatusDataView = UserStatusDataView(
+        id = id,
+        created_at = created_at,
+        text = text,
+        user_name = this.user.screen_name,
+        retweeted = retweeted,
+        is_quote_status = is_quote_status
+)
+
+fun SearchStatusResponse.toDataView() : UserStatusDataView = UserStatusDataView(
+        id = id,
+        created_at = created_at,
+        text = text,
+        user_name = this.user.screen_name,
+        retweeted = retweeted,
+        is_quote_status = is_quote_status
 )

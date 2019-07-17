@@ -17,24 +17,25 @@
             app:layout_scrollFlags="scroll|enterAlways"
             app:titleEnabled="false">
 
-            <!--<androidx.appcompat.widget.Toolbar-->
-                <!--android:id="@+id/toolbar"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="?attr/actionBarSize"-->
-                <!--android:background="@color/main"-->
-                <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />-->
 
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 app:layout_collapseMode="parallax"
-                android:layout_height="60dp">
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentTop="true"
+                    android:id="@+id/profile_avatar"/>
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/profile_avatar"
                     android:id="@+id/user_name"
-                    android:layout_alignParentTop="true" />
+                    />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="match_parent"
@@ -51,18 +52,6 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
-    <!--<com.navcast.mazucrew.presentation.ui.genericview.GenericActionView-->
-        <!--android:id="@+id/empty_View"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:gravity="center"-->
-        <!--android:visibility="gone"-->
-        <!--app:emptyActionMessage="Create contact"-->
-        <!--app:emptyDrawable="@drawable/ic_sentiment_dissatisfied_gray_24dp"-->
-        <!--app:emptyMessage="Can't find what you're looking for?"-->
-        <!--app:emptySecondaryActionMessage=""-->
-        <!--app:emptyTitle="Contact not found" />-->
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nested_scrollview"
@@ -74,51 +63,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:id="@+id/new_contact_holder"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:layout_alignParentTop="true"
-                android:background="?selectableItemBackground"
-                android:clickable="true"
-                android:orientation="horizontal">
-
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    app:srcCompat="@drawable/ic_person_add_black_24dp" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:text="New Contact"
-                    android:textColor="@color/contact_name_text_color"
-                    android:textSize="18sp"
-                    android:textStyle="normal" />
-
-            </LinearLayout>
-
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_below="@id/new_contact_holder"
-                android:id="@+id/contacts_size"
+                android:layout_alignParentTop="true"
+                android:id="@+id/tweets_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/fab_label_bg"
                 android:paddingBottom="10dp"
                 android:paddingLeft="20dp"
                 android:paddingTop="10dp"
-                android:text="Contacts"
+                android:text="My Tweets"
                 android:textStyle="bold" />
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_below="@id/contacts_size"
-                android:id="@+id/contacts_recycler"
+                android:layout_below="@id/tweets_title"
+                android:id="@+id/status_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scrollbars="none"

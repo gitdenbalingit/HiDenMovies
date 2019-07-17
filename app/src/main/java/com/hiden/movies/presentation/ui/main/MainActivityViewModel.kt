@@ -54,12 +54,12 @@ class MainActivityViewModel @Inject constructor(
     }
 
     fun searchTweet(){
-        addToDisposables(searchTweetUseCase
-                .getObservable("hello")
-                .subscribe(
-                        { Log.v("PIA","Sucess search - "+it.statuses[0].text)},
-                        {Log.v("PIA","Error  search- "+it.localizedMessage)}
-                ))
+//        addToDisposables(searchTweetUseCase
+//                .getObservable("hello")
+//                .subscribe(
+//                        { Log.v("PIA","Sucess search - "+it.statuses[0].text)},
+//                        {Log.v("PIA","Error  search- "+it.localizedMessage)}
+//                ))
     }
 
     fun postStatus(){

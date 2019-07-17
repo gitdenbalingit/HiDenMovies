@@ -8,6 +8,7 @@ import com.hiden.movies.presentation.ui.detail.DetailActivityViewModel
 import com.hiden.movies.presentation.ui.main.MainActivityViewModel
 import com.hiden.movies.presentation.ui.profile.UserProfileViewModel
 import com.hiden.movies.presentation.ui.search.SearchMovieViewModel
+import com.hiden.movies.presentation.ui.searchtweet.SearchTweetViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -37,6 +38,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(UserProfileViewModel::class)
     abstract fun bindUserProfileViewModel(viewModel: UserProfileViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SearchTweetViewModel::class)
+    abstract fun bindSearchTweetViewModel(viewModel: SearchTweetViewModel): ViewModel
 
 
 }

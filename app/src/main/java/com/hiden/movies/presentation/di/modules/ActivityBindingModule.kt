@@ -9,6 +9,8 @@ import com.hiden.movies.presentation.ui.profile.UserProfileActivity
 import com.hiden.movies.presentation.ui.profile.UserProfileActivityModule
 import com.hiden.movies.presentation.ui.search.SearchMovieActivity
 import com.hiden.movies.presentation.ui.search.SearchMovieActivityModule
+import com.hiden.movies.presentation.ui.searchtweet.SearchTweetActivity
+import com.hiden.movies.presentation.ui.searchtweet.SearchTweetActivityModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -30,5 +32,9 @@ internal abstract class ActivityBindingModule {
     @PerActivity
     @ContributesAndroidInjector(modules = [UserProfileActivityModule::class])
     abstract fun bindUserProfileActivity(): UserProfileActivity
+
+    @PerActivity
+    @ContributesAndroidInjector(modules = [SearchTweetActivityModule::class])
+    abstract fun bindSearchTweetActivity(): SearchTweetActivity
 
 }

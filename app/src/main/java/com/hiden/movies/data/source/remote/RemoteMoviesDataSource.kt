@@ -1,5 +1,7 @@
 package com.hiden.movies.data.source.remote
 
+import com.hiden.movies.data.entity.Mapper.toDataView
+import io.reactivex.rxkotlin.toFlowable
 import javax.inject.Inject
 
 class RemoteMoviesDataSource @Inject constructor(
