@@ -28,8 +28,12 @@
         </activity>
 
         <activity
-                android:name="com.hiden.movies.presentation.ui.search.SearchMovieActivity"
+                android:name=".presentation.ui.choosestage.ChooseStageActivity"
                 android:theme="@style/AppThemeNoActionBar" />
+
+        <activity
+            android:name="com.hiden.movies.presentation.ui.search.SearchMovieActivity"
+            android:theme="@style/AppThemeNoActionBar" />
 
         <activity
                 android:name="com.hiden.movies.presentation.ui.detail.DetailActivity"

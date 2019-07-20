@@ -11,7 +11,9 @@ import com.hiden.movies.presentation.AppActivity
 import com.hiden.movies.presentation.common.adapter.GamesAdapter
 import com.hiden.movies.presentation.common.ext.observe
 import com.hiden.movies.presentation.common.ext.withViewModel
+import com.hiden.movies.presentation.ui.choosestage.ChooseStageActivity
 import kotlinx.android.synthetic.main.activity_choose_game.*
+import org.jetbrains.anko.intentFor
 import javax.inject.Inject
 
 
@@ -62,7 +64,7 @@ class ChooseGameActivity : AppActivity(), GamesAdapter.Delegate {
     }
 
     override fun onGameItemClicked(gameResultResponse: GameResultResponse) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        startActivity(intentFor<ChooseStageActivity>())
     }
 
 
