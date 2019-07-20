@@ -62,4 +62,15 @@ interface ApiService {
     ): Single<PagedResponse<MovieResponse>>
 
 
+    @GET("api/games/?limit=0&offset=0")
+    fun getGames(): Single<PageResponse<GameResultResponse>>
+
+
+    @GET("api/stages/?limit=0&offset=0")
+    fun getStages(): Single<PageResponse<StagesResponse>>
+
+    @GET("api/players/?limit=0&offset=0")
+    fun getPlayers(): Single<PageResponse<PlayerResponse>>
+
+
 }

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/movie_item_holder"
+    android:clickable="true"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/game_item_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:foreground="@drawable/selectable_background"
+        app:cardCornerRadius="9dp"
+        app:cardElevation="0dp"
+        android:layout_marginRight="@dimen/dp_6"
+        app:cardUseCompatPadding="true"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/game_image"
+                android:layout_width="150dp"
+                android:layout_height="80dp"
+                android:src="@drawable/gradient_fade_bottom_top"
+                android:scaleType="centerCrop"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/game_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|bottom"
+                android:maxLines="2"
+                android:minLines="2"
+                android:text="TEST"
+                android:paddingBottom="@dimen/dp_10"
+                android:textColor="@color/primary_text_color"
+                android:textSize="@dimen/sp_13"
+
+                />
+
+
+        </LinearLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+</RelativeLayout>

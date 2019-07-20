@@ -17,7 +17,7 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.hiden.movies.presentation.ui.main.MainActivity"
+            android:name=".presentation.ui.choosegame.ChooseGameActivity"
             android:label="@string/app_name"
             android:theme="@style/AppThemeNoActionBar">
             <intent-filter>

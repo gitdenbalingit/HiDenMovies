@@ -29,4 +29,14 @@ class RemoteMoviesDataSource @Inject constructor(
 
     fun upcomingMovies() =
         apiService.upcomingMovies("c12cad84bcfc673c7863e4de940ab4ee")
+
+    /**
+     * CAPSL
+     */
+
+    fun getGames() = apiService.getGames()
+
+    fun getStages() = apiService.getStages()
+
+    fun getPlayers() = apiService.getPlayers()
 }
