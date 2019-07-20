@@ -3,6 +3,7 @@ package com.hiden.movies.presentation.ui.choosegame
 import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.hiden.movies.R
 import com.hiden.movies.data.entity.GameResultResponse
@@ -54,6 +55,7 @@ class ChooseGameActivity : AppActivity(), GamesAdapter.Delegate {
         setSupportActionBar(toolbar)
         supportActionBar?.apply {
             title = "Choose Game"
+            titleColor = resources.getColor(R.color.primary_dark_text_color)
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
         }

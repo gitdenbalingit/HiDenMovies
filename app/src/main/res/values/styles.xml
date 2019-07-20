@@ -38,8 +38,8 @@
     <style name="AppThemeNoActionBarWhiteText" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:actionBarStyle">@style/MyActionBar</item>
         <item name="actionBarStyle">@style/MyActionBar</item>
-        <item name="android:actionMenuTextColor">@android:color/white</item>
-        <item name="actionMenuTextColor">@android:color/white</item>
+        <item name="android:actionMenuTextColor">@android:color/black</item>
+        <item name="actionMenuTextColor">@android:color/black</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="colorControlActivated">@color/colorAccent</item>
         <item name="colorSwitchThumbNormal">@color/all_primary</item>
