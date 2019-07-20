@@ -17,9 +17,6 @@ class GetUserStatusesUseCase @Inject constructor(
         postExecutionThread: PostExecutionThread)
     : NewSingleUseCase<Any?, List<UserStatusDataView>>(threadExecutor, postExecutionThread) {
     override fun buildUseCaseSingle(params: Any?): Single<List<UserStatusDataView>> {
-
-//        return remoteMoviesDataSource.getStatuses()
-
         return remoteMoviesDataSource.getStatuses().map { it.map { it.toDataView() } }
     }
 

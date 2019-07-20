@@ -17,8 +17,6 @@ import javax.inject.Inject
 class UserProfileViewModel @Inject constructor(
         private val getUserUseCase: GetUserUseCase,
         private val getUserStatusesUseCase: GetUserStatusesUseCase
-//        private val searchTweetUseCase: SearchTweetUseCase,
-//        private val postStatusUseCase: PostStatusUseCase
 ) : BaseViewModel() {
 
 

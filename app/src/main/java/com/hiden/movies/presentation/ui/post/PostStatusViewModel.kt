@@ -1,6 +1,5 @@
 package com.hiden.movies.presentation.ui.post
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.hiden.movies.data.entity.PostStatusResponse

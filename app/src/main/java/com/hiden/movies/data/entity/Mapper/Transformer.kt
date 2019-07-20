@@ -71,7 +71,7 @@ fun StatusesResponse.toDataView() : UserStatusDataView = UserStatusDataView(
         user_name = this.user.screen_name,
         retweeted = retweeted,
         is_quote_status = is_quote_status,
-        image_url = ""
+        user_avatar = this.user.profile_image_url
 )
 
 fun SearchStatusResponse.toDataView() : UserStatusDataView = UserStatusDataView(
@@ -81,5 +81,5 @@ fun SearchStatusResponse.toDataView() : UserStatusDataView = UserStatusDataView(
         user_name = this.user.screen_name,
         retweeted = retweeted,
         is_quote_status = is_quote_status,
-        image_url = ""
+        user_avatar = this.user.profile_image_url
 )

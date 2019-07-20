@@ -15,7 +15,7 @@ class PostStatusUseCase @Inject constructor(
 ): NewSingleUseCase<String,PostStatusResponse>(threadExecutor,postExecutionThread) {
 
     override fun buildUseCaseSingle(params: String?): Single<PostStatusResponse> {
-        return remoteMoviesDataSource.postStatus(params!!)
+        return requireNotNull(params).run(remoteMoviesDataSource::postStatus)
     }
 
 }

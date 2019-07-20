@@ -13,11 +13,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/avatar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:foregroundGravity="center_vertical" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_below="@id/avatar"
             android:text="Username" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -41,20 +49,18 @@
             android:layout_below="@id/retweeted"
             android:text="Yes quote" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/image"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/quote"/>
-
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
             android:text="Sample Data" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/view_divider_thin_color" />
 
 
     </RelativeLayout>

@@ -44,6 +44,9 @@ class UserStatusItemViewHolder(
         itemView.retweeted.text = "Retweeted: Yes".takeIf { item.retweeted } ?: "Retweeted: No"
         itemView.quote.text = "Quote status: Yes".takeIf { item.is_quote_status } ?: "Quote status: No"
         itemView.date.text = item.created_at
+        GlideApp.with(itemView)
+                .load(item.user_avatar)
+                .into(itemView.avatar)
 
 
     }

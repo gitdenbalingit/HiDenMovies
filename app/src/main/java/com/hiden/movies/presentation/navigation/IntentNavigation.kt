@@ -17,7 +17,7 @@ class DetailScreenNavigator @Inject constructor(private val activity: Activity){
 
 
 class SearchScreenNavigator @Inject constructor(private val activity: Activity){
-    fun navigate(id: Int){
+    fun navigate(){
         activity.apply {
             transitionRightToLeft(intentFor<SearchTweetActivity>())
         }
@@ -25,9 +25,11 @@ class SearchScreenNavigator @Inject constructor(private val activity: Activity){
 }
 
 class PostScreenNavigator @Inject constructor(private val activity: Activity){
-    fun navigate(id: Int){
+    fun navigate(){
         activity.apply {
             transitionRightToLeft(intentFor<PostStatusActivity>())
         }
     }
 }
+
+

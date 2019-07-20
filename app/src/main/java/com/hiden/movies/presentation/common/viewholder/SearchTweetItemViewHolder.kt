@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.hiden.movies.R
+import com.hiden.movies.data.di.GlideApp
 import com.hiden.movies.presentation.common.adapter.SearchTweetAdapter
 import com.hiden.movies.presentation.model.UserStatusDataView
 import kotlinx.android.synthetic.main.item_search_tweet.view.*
@@ -21,7 +22,7 @@ class SearchTweetItemViewHolder(
             ViewHolderFactory<BindingViewHolder<UserStatusDataView>> {
         override fun create(parent: ViewGroup) = LayoutInflater
                 .from(parent.context)
-                .inflate(R.layout.item_user_status_view, parent, false)
+                .inflate(R.layout.item_search_tweet, parent, false)
                 .let { SearchTweetItemViewHolder(it, delegate)}
     }
 
@@ -43,6 +44,10 @@ class SearchTweetItemViewHolder(
         itemView.retweeted.text = "Retweeted: Yes".takeIf { item.retweeted } ?: "Retweeted: No"
         itemView.quote.text = "Quote status: Yes".takeIf { item.is_quote_status } ?: "Quote status: No"
         itemView.date.text = item.created_at
+
+        GlideApp.with(itemView)
+                .load(item.user_avatar)
+                .into(itemView.avatar)
 
     }
 

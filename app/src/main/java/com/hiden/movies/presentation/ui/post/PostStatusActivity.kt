@@ -14,7 +14,7 @@ import javax.inject.Inject
 class PostStatusActivity: AppActivity() {
 
     companion object {
-        const val MAX_MESSAGE = 14
+        const val MAX_MESSAGE = 140
     }
 
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -35,15 +35,11 @@ class PostStatusActivity: AppActivity() {
 
 
 
-
-
         disposableContainer.add( RxTextView.textChangeEvents(text)
                 .map { it.count() }
                 .filter { (MAX_MESSAGE - it) >= 0 }
                 .doOnNext { characters.text = (MAX_MESSAGE - it).toString() }
                 .subscribe())
-
-
 
 
     }

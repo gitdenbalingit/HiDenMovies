@@ -38,7 +38,7 @@
         android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_margin="20dp"
-        android:maxLength="14"
+        android:maxLength="140"
         android:layout_height="wrap_content" />
 
 

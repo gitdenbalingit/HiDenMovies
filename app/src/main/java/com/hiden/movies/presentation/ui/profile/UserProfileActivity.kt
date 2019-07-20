@@ -1,6 +1,7 @@
 package com.hiden.movies.presentation.ui.profile
 
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import com.hiden.movies.presentation.AppActivity
@@ -8,13 +9,13 @@ import com.hiden.movies.R
 import com.hiden.movies.data.di.GlideApp
 import com.hiden.movies.presentation.common.adapter.UserStatusAdapter
 import com.hiden.movies.presentation.common.ext.observe
+import com.hiden.movies.presentation.common.ext.transitionLeftToRight
 import com.hiden.movies.presentation.common.ext.withViewModel
 import com.hiden.movies.presentation.model.UserDataView
 import com.hiden.movies.presentation.model.UserStatusDataView
-import com.hiden.movies.presentation.ui.post.PostStatusActivity
-import com.hiden.movies.presentation.ui.searchtweet.SearchTweetActivity
+import com.hiden.movies.presentation.navigation.PostScreenNavigator
+import com.hiden.movies.presentation.navigation.SearchScreenNavigator
 import kotlinx.android.synthetic.main.activity_user_profile.*
-import org.jetbrains.anko.intentFor
 import javax.inject.Inject
 
 
@@ -24,6 +25,9 @@ class UserProfileActivity: AppActivity(), UserStatusAdapter.Delegate {
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     @Inject lateinit var userStatusAdapter: UserStatusAdapter
 
+    @Inject lateinit var goToSearchScreen: SearchScreenNavigator
+    @Inject lateinit var goToPostScreen: PostScreenNavigator
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,11 +36,11 @@ class UserProfileActivity: AppActivity(), UserStatusAdapter.Delegate {
         observerViewModel()
 
         search.setOnClickListener {
-            startActivity(intentFor<SearchTweetActivity>())
+            goToSearchScreen.navigate()
         }
 
         post.setOnClickListener {
-            startActivity(intentFor<PostStatusActivity>())
+            goToPostScreen.navigate()
         }
 
     }
@@ -88,7 +92,7 @@ class UserProfileActivity: AppActivity(), UserStatusAdapter.Delegate {
     }
 
     override fun onStatusItemClicked(userStatusDataView: UserStatusDataView) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.v("PIA" , "click - "+userStatusDataView.text)
     }
 
 }

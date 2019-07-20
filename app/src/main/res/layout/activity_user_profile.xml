@@ -19,8 +19,6 @@
 
 
 
-
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 app:layout_collapseMode="parallax"

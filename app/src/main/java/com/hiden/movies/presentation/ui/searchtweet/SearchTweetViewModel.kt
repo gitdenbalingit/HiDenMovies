@@ -21,7 +21,6 @@ class SearchTweetViewModel @Inject constructor(
 
 
     fun searchTweet(query: String){
-        Log.v("PIA","searchTweet = "+query)
         addToDisposables(searchTweetUseCase
                 .getObservable(query)
                 .subscribe(
