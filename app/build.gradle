@@ -9,7 +9,7 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId 'com.hiden.movies'
+        applicationId 'com.hiden.challenge'
         minSdkVersion 16
         targetSdkVersion 28
         multiDexEnabled true

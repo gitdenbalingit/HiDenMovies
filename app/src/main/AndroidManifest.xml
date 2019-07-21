@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hiden.movies">
+    package="com.hiden.challenge">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.INTERNET" />
 
 
     <application
-        android:name="com.hiden.movies.presentation.application.HiDenMoviesApplication"
+        android:name="com.hiden.challenge.presentation.application.HiDenMoviesApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -36,11 +36,11 @@
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
 
         <activity
-            android:name="com.hiden.movies.presentation.ui.search.SearchMovieActivity"
+            android:name="com.hiden.challenge.presentation.ui.search.SearchMovieActivity"
             android:theme="@style/AppThemeNoActionBar" />
 
         <activity
-                android:name="com.hiden.movies.presentation.ui.detail.DetailActivity"
+                android:name="com.hiden.challenge.presentation.ui.detail.DetailActivity"
                 android:theme="@style/AppThemeNoActionBar" />
 
         <activity android:name="com.facebook.accountkit.ui.AccountKitActivity" />
