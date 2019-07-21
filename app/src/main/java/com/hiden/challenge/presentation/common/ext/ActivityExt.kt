@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.*
 import com.hiden.challenge.R
 import com.hiden.challenge.domain.model.ChosenCar
-import com.hiden.challenge.presentation.util.INTENT_PARCELABLE_EXTRA
 
 inline fun <reified T : ViewModel> FragmentActivity.getViewModel(): T {
     return ViewModelProviders.of(this)[T::class.java]

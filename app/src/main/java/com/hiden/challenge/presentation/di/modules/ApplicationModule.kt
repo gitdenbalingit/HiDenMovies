@@ -6,7 +6,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import android.provider.Settings
-import com.hiden.challenge.presentation.application.HiDenMoviesApplication
+import com.hiden.challenge.presentation.application.HiDenChallengeApplication
 import com.hiden.challenge.presentation.common.arch.PostExecutionThread
 import com.hiden.challenge.presentation.common.arch.ThreadExecutor
 import com.hiden.challenge.presentation.common.arch.ThreadPoolExecutor
@@ -21,12 +21,12 @@ class ApplicationModule {
 
     @Provides
     @PerApplication
-    fun provideApplication(myChatApplication: HiDenMoviesApplication): Application = myChatApplication
+    fun provideApplication(myChatApplication: HiDenChallengeApplication): Application = myChatApplication
 
     @Provides
     @PerApplication
     fun provideContext(
-        myChatApplication: HiDenMoviesApplication
+        myChatApplication: HiDenChallengeApplication
     ): Context = myChatApplication.applicationContext
 
 

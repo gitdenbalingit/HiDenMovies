@@ -7,7 +7,7 @@
 
 
     <application
-        android:name="com.hiden.challenge.presentation.application.HiDenMoviesApplication"
+        android:name="com.hiden.challenge.presentation.application.HiDenChallengeApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -34,16 +34,6 @@
         <activity
             android:name=".presentation.ui.chooseplayers.ChoosePlayersActivity"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
-
-        <activity
-            android:name="com.hiden.challenge.presentation.ui.search.SearchMovieActivity"
-            android:theme="@style/AppThemeNoActionBar" />
-
-        <activity
-                android:name="com.hiden.challenge.presentation.ui.detail.DetailActivity"
-                android:theme="@style/AppThemeNoActionBar" />
-
-        <activity android:name="com.facebook.accountkit.ui.AccountKitActivity" />
 
 
         <meta-data

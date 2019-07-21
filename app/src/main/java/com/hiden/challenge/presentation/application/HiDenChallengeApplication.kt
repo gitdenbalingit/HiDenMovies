@@ -11,7 +11,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 
-class HiDenMoviesApplication : Application(), HasActivityInjector, HasBroadcastReceiverInjector,
+class HiDenChallengeApplication : Application(), HasActivityInjector, HasBroadcastReceiverInjector,
     HasServiceInjector {
 
     @Inject protected lateinit var broadcastReceiverDispatchingAndroidInjector: DispatchingAndroidInjector<BroadcastReceiver>

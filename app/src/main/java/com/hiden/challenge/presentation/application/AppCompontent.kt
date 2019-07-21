@@ -1,6 +1,5 @@
 package com.hiden.challenge.presentation.application
 
-import com.hiden.challenge.data.di.DataModule
 import com.hiden.challenge.data.di.NetworkModule
 import com.hiden.challenge.presentation.di.PerApplication
 import com.hiden.challenge.presentation.di.modules.ActivityBindingModule
@@ -15,7 +14,6 @@ import dagger.android.support.AndroidSupportInjectionModule
     modules = [
         (ApplicationModule::class),
         (NetworkModule::class),
-        (DataModule::class),
         (ActivityBindingModule::class),
         (ViewModelModule::class),
         (AndroidInjectionModule::class),
@@ -27,12 +25,12 @@ interface ApplicationComponent {
     @Component.Builder
     interface Builder {
         @BindsInstance
-        fun application(hiDenMoviesApplication: HiDenMoviesApplication): Builder
+        fun application(hiDenChallengeApplication: HiDenChallengeApplication): Builder
 
         fun networkModule(networkModule: NetworkModule): Builder
 
         fun build(): ApplicationComponent
     }
 
-    fun inject(app: HiDenMoviesApplication)
+    fun inject(app: HiDenChallengeApplication)
 }
