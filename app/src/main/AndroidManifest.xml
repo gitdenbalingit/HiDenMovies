@@ -32,6 +32,10 @@
                 android:theme="@style/AppThemeNoActionBar" />
 
         <activity
+            android:name=".presentation.ui.chooseplayers.ChoosePlayersActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+
+        <activity
             android:name="com.hiden.movies.presentation.ui.search.SearchMovieActivity"
             android:theme="@style/AppThemeNoActionBar" />
 

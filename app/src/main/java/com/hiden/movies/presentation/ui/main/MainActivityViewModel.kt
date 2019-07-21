@@ -1,12 +1,10 @@
 package com.hiden.movies.presentation.ui.main
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.hiden.movies.data.entity.MovieResponse
-import com.hiden.movies.domain.appusecase.LoadDiscoverMoviesUseCase
-import com.hiden.movies.domain.appusecase.LoadNowShowingMoviesUseCase
-import com.hiden.movies.domain.appusecase.LoadTopRatedMoviesUseCase
-import com.hiden.movies.domain.appusecase.LoadUpcomingMoviesUseCase
+import com.hiden.movies.domain.appusecase.*
 import com.hiden.movies.presentation.common.arch.BaseViewModel
 import com.hiden.movies.presentation.model.MovieDataView
 import javax.inject.Inject
@@ -15,7 +13,12 @@ class MainActivityViewModel @Inject constructor(
     private val loadNowShowingMoviesUseCase: LoadNowShowingMoviesUseCase,
     private val loadDiscoverMoviesUseCase: LoadDiscoverMoviesUseCase,
     private val loadTopRatedMoviesUseCase: LoadTopRatedMoviesUseCase,
-    private val loadUpcomingMoviesUseCase: LoadUpcomingMoviesUseCase
+    private val loadUpcomingMoviesUseCase: LoadUpcomingMoviesUseCase,
+
+
+    private val getGamesUseCase: GetGamesUseCase,
+    private val getStagesUseCase: GetStagesUseCase,
+    private val getPlayersUseCase: GetPlayersUseCase
 ) : BaseViewModel() {
 
 
@@ -30,6 +33,36 @@ class MainActivityViewModel @Inject constructor(
 
     val upcomingList: LiveData<Result<List<MovieDataView>>> get() = upcomingListResultLiveData
     private val upcomingListResultLiveData = MutableLiveData<Result<List<MovieDataView>>>()
+
+
+
+    fun getGames(){
+        addToDisposables(getGamesUseCase
+                .getObservable("")
+                .subscribe(
+                        { Log.v("PIA","Success - "+it[0].name)},
+                        {Log.v("PIA","Error - "+it.localizedMessage)}
+                ))
+    }
+
+    fun getStages(){
+        addToDisposables(getStagesUseCase
+                .getObservable("")
+                .subscribe(
+                        { Log.v("PIA","getStagesUseCase Success - "+it[0].name)},
+                        {Log.v("PIA"," getStagesUseCase Error - "+it.localizedMessage)}
+                ))
+    }
+
+
+    fun getPlayers(){
+        addToDisposables(getPlayersUseCase
+                .getObservable("")
+                .subscribe(
+                        { Log.v("PIA","getPlayers Success - "+it[0].profile.username)},
+                        {Log.v("PIA"," getPlayers Error - "+it.localizedMessage)}
+                ))
+    }
 
 
 

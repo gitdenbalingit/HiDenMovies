@@ -57,6 +57,11 @@ class MainActivity: AppActivity(), MoviesAdapter.Delegate {
 
     private fun observeViewModel(){
         withViewModel<MainActivityViewModel>(viewModelFactory) {
+
+            getGames()
+            getStages()
+            getPlayers()
+
             observe(converItem, ::displayCoverImage)
             observe(topRatedList, ::loadTopRatedContents)
             observe(discoverList, ::loadDiscoverContents)

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.hiden.movies.presentation.di.ViewModelFactory
 import com.hiden.movies.presentation.di.ViewModelKey
 import com.hiden.movies.presentation.ui.choosegame.ChooseGameViewModel
+import com.hiden.movies.presentation.ui.chooseplayers.ChoosePlayersViewModel
 import com.hiden.movies.presentation.ui.choosestage.ChooseStageViewModel
 import com.hiden.movies.presentation.ui.detail.DetailActivityViewModel
 import com.hiden.movies.presentation.ui.main.MainActivityViewModel
@@ -43,6 +44,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ChooseStageViewModel::class)
     abstract fun bindChooseStageViewModel(viewModel: ChooseStageViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ChoosePlayersViewModel::class)
+    abstract fun bindChoosePlayersViewModel(viewModel: ChoosePlayersViewModel): ViewModel
 
 
 }

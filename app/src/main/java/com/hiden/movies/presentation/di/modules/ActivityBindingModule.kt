@@ -3,6 +3,8 @@ package com.hiden.movies.presentation.di.modules
 import com.hiden.movies.presentation.di.PerActivity
 import com.hiden.movies.presentation.ui.choosegame.ChooseGameActivity
 import com.hiden.movies.presentation.ui.choosegame.ChooseGameActivityModule
+import com.hiden.movies.presentation.ui.chooseplayers.ChoosePlayersActivity
+import com.hiden.movies.presentation.ui.chooseplayers.ChoosePlayersActivityModule
 import com.hiden.movies.presentation.ui.choosestage.ChooseStageActivity
 import com.hiden.movies.presentation.ui.choosestage.ChooseStageActivityModule
 import com.hiden.movies.presentation.ui.detail.DetailActivity
@@ -36,5 +38,9 @@ internal abstract class ActivityBindingModule {
     @PerActivity
     @ContributesAndroidInjector(modules = [ChooseStageActivityModule::class])
     abstract fun bindChooseStageActivity(): ChooseStageActivity
+
+    @PerActivity
+    @ContributesAndroidInjector(modules = [ChoosePlayersActivityModule::class])
+    abstract fun bindChoosePlayersActivity(): ChoosePlayersActivity
 
 }

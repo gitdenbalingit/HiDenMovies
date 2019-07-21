@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:background="@color/all_primary"
+        android:theme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <!--<androidx.appcompat.widget.SearchView-->
+    <!--android:id="@+id/search_view"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="?attr/actionBarSize"-->
+    <!--android:layout_below="@id/toolbar"-->
+    <!--android:background="@color/light_gray"-->
+    <!--app:closeIcon="@null"-->
+    <!--android:visibility="gone"-->
+    <!--app:queryHint="Search"-->
+    <!--app:searchIcon="@null" />-->
+
+    <!--<FrameLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_below="@id/search_view">-->
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/toolbar"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="Add to the new tournament"
+        android:layout_marginRight="@dimen/dp_15"
+        android:textSize="@dimen/sp_14"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_toRightOf="@id/label"
+        android:id="@+id/selected_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="3/8"
+        android:textSize="@dimen/sp_14"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/done_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/toolbar"
+        android:layout_marginRight="@dimen/dp_15"
+        android:text="Done" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:layout_below="@id/label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.MaterialComponents.Chip"
+        android:id="@+id/chip_container">
+
+
+    </com.google.android.material.chip.ChipGroup>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/chip_container"
+        android:id="@+id/players_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingTop="20dp"
+        android:scrollbars="none"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    <!--<androidx.appcompat.widget.AppCompatTextView-->
+    <!--android:id="@+id/selected_item_count"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_gravity="bottom"-->
+    <!--android:layout_height="?attr/actionBarSize"-->
+    <!--android:visibility="gone"-->
+    <!--android:background="@color/colorAccent"-->
+    <!--android:textSize="16sp"-->
+    <!--android:textStyle="bold"-->
+    <!--android:textAlignment="center"-->
+    <!--android:textColor="@android:color/white"-->
+    <!--android:gravity="center_vertical"/>-->
+
+    <!--</FrameLayout>-->
+
+
+</RelativeLayout>

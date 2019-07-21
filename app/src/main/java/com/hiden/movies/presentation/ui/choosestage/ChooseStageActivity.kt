@@ -9,7 +9,9 @@ import com.hiden.movies.presentation.AppActivity
 import com.hiden.movies.presentation.common.adapter.StagesAdapter
 import com.hiden.movies.presentation.common.ext.observe
 import com.hiden.movies.presentation.common.ext.withViewModel
+import com.hiden.movies.presentation.ui.chooseplayers.ChoosePlayersActivity
 import kotlinx.android.synthetic.main.activity_choose_stage.*
+import org.jetbrains.anko.intentFor
 import javax.inject.Inject
 
 class ChooseStageActivity : AppActivity(), StagesAdapter.Delegate {
@@ -61,7 +63,7 @@ class ChooseStageActivity : AppActivity(), StagesAdapter.Delegate {
     }
 
     override fun onStageItemClicked(stagesResponse: StagesResponse) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        startActivity(intentFor<ChoosePlayersActivity>())
     }
 
 
