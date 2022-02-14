@@ -1,6 +1,6 @@
 # HiDenMovies
 
-Hmlet Challenge that utilizes https://developers.themoviedb.org/ as API source
+Android App that utilizes https://developers.themoviedb.org/ as API source
 
 
 ![Screenshot](main-screen.png)
