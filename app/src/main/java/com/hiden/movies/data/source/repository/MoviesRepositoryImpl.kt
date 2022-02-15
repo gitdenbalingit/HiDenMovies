@@ -15,8 +15,10 @@ class MoviesRepositoryImpl @Inject constructor(
    override fun searchMovie(query: String): Single<PagedResponse<MovieResponse>> =
             query.run(remoteMoviesDataSource::searchMovie)
 
-    override fun searchMovieWithPage(query: String, page: Int): Single<PagedResponse<MovieResponse>> =
-            remoteMoviesDataSource.searchMovieWithPage(query, page)
+    override fun searchMovieWithPage(query: String, page: Int): Single<List<MovieResponse>> =
+            remoteMoviesDataSource
+                .searchMovieWithPage(query, page)
+                .map { it.results }
 
     override fun loadMovieDetail(movieId: Int): Single<MovieDetailResponse> =
             movieId.run(remoteMoviesDataSource::loadMovieDetail)

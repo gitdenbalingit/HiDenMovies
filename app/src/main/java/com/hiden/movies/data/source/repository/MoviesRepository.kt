@@ -12,7 +12,7 @@ interface MoviesRepository {
 
     fun searchMovie(query: String): Single<PagedResponse<MovieResponse>>
 
-    fun searchMovieWithPage(query: String, page: Int): Single<PagedResponse<MovieResponse>>
+    fun searchMovieWithPage(query: String, page: Int): Single<List<MovieResponse>>
 
     fun loadMovieDetail(movieId: Int): Single<MovieDetailResponse>
 
