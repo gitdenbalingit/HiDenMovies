@@ -7,8 +7,6 @@ import android.content.Intent
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.*
 import com.hiden.movies.R
-import com.hiden.movies.domain.model.ChosenCar
-import com.hiden.movies.presentation.util.INTENT_PARCELABLE_EXTRA
 
 inline fun <reified T : ViewModel> FragmentActivity.getViewModel(): T {
     return ViewModelProviders.of(this)[T::class.java]

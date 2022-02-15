@@ -18,11 +18,11 @@ interface MoviesRepository {
 
     fun searchTVShow(query: String): Single<PagedResponse<TVShowResponse>>
 
-    fun discoverMovies(): Single<PagedResponse<MovieResponse>>
+    fun discoverMovies(): Single<List<MovieResponse>>
 
-    fun topRatedMovies(): Single<PagedResponse<MovieResponse>>
+    fun topRatedMovies(): Single<List<MovieResponse>>
 
-    fun nowShowingMovies(): Single<PagedResponse<MovieResponse>>
+    fun nowShowingMovies(): Single<List<MovieResponse>>
 
-    fun upcomingMovies(): Single<PagedResponse<MovieResponse>>
+    fun upcomingMovies(): Single<List<MovieResponse>>
 }
