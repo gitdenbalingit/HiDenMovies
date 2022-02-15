@@ -9,6 +9,7 @@ import com.hiden.movies.presentation.di.modules.ViewModelModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
+import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 
 @Component(
@@ -22,17 +23,4 @@ import dagger.android.support.AndroidSupportInjectionModule
         (AndroidSupportInjectionModule::class)]
 )
 @PerApplication
-interface ApplicationComponent {
-
-    @Component.Builder
-    interface Builder {
-        @BindsInstance
-        fun application(hiDenMoviesApplication: HiDenMoviesApplication): Builder
-
-        fun networkModule(networkModule: NetworkModule): Builder
-
-        fun build(): ApplicationComponent
-    }
-
-    fun inject(app: HiDenMoviesApplication)
-}
+interface ApplicationComponent: AndroidInjector<HiDenMoviesApplication>

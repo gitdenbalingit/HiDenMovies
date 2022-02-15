@@ -31,7 +31,7 @@ class SearchMovieViewModel @Inject constructor(
             .setEnablePlaceholders(false)
             .build()
 
-        listing = LivePagedListBuilder<Int, MovieResponse>(sourceFactory!!, config).build()
+        listing = LivePagedListBuilder<Int, MovieResponse>(sourceFactory, config).build()
 
         listing.value?.dataSource?.invalidate()
 
@@ -40,7 +40,7 @@ class SearchMovieViewModel @Inject constructor(
     }
 
     fun retry() {
-        sourceFactory!!.sourceLiveData.value?.retry()
+        sourceFactory.sourceLiveData.value?.retry()
     }
 
 

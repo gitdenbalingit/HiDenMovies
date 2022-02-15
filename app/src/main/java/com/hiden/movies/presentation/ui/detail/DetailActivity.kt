@@ -24,7 +24,6 @@ class DetailActivity: AppActivity(), MoviesAdapter.Delegate {
     companion object {
         const val KEY_MOVIE_ID = "DetailActivity.movie-id"
     }
-    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     @Inject lateinit var similarMoviesAdapter: MoviesAdapter
     @Inject lateinit var detailScreenNavigator: DetailScreenNavigator
 

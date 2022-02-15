@@ -1,12 +1,9 @@
 package com.hiden.movies.presentation.ui.search
 
-import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
-import android.util.TypedValue
 import android.widget.*
+import androidx.activity.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.fotoku.mobile.libs.rx.observable.RxSearchViewSupport
 import com.hiden.movies.R
 import com.hiden.movies.data.entity.MovieResponse
@@ -18,7 +15,6 @@ import com.hiden.movies.presentation.model.State
 import com.hiden.movies.presentation.navigation.DetailScreenNavigator
 import com.hiden.movies.presentation.ui.genericview.ItemDecorationAlbumColumns
 import io.reactivex.android.schedulers.AndroidSchedulers
-import kotlinx.android.synthetic.main.abc_search_view.view.*
 import kotlinx.android.synthetic.main.activity_search_movie.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -26,9 +22,10 @@ import javax.inject.Inject
 class SearchMovieActivity : AppActivity(), SearchMovieAdapter.Delegate {
 
 
-    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     @Inject lateinit var detailScreenNavigator: DetailScreenNavigator
     lateinit var searchMoviePagedAdapter: SearchMoviePagedAdapter
+
+    private val viewModel: SearchMovieViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +35,7 @@ class SearchMovieActivity : AppActivity(), SearchMovieAdapter.Delegate {
         setupSearchList()
 
 
-        withViewModel<SearchMovieViewModel>(viewModelFactory) {
+        with(viewModel) {
             listing.observe(this@SearchMovieActivity, Observer {
                 searchMoviePagedAdapter.submitList(it)
 
@@ -80,8 +77,8 @@ class SearchMovieActivity : AppActivity(), SearchMovieAdapter.Delegate {
         searchView.onActionViewExpanded()
         searchView.maxWidth = Integer.MAX_VALUE
 
-        val v = searchView.search_plate
-        v.setBackgroundColor(Color.TRANSPARENT)
+//        val v = searchView.search_plate
+//        v.setBackgroundColor(Color.TRANSPARENT)
 
         disposableContainer.add(
             RxSearchViewSupport.changes(searchView).throttleFirst(
@@ -119,11 +116,11 @@ class SearchMovieActivity : AppActivity(), SearchMovieAdapter.Delegate {
             searchTextView.hint = "Looking for?"
             searchTextView.setTextColor(resources.getColor(R.color.primary_text_color))
 
-            val search_text = searchView.search_src_text as AutoCompleteTextView
-            search_text.setTextSize(
-                TypedValue.COMPLEX_UNIT_PX,
-                resources.getDimensionPixelSize(R.dimen.sp_26).toFloat()
-            )
+//            val search_text = searchView.search_src_text as AutoCompleteTextView
+//            search_text.setTextSize(
+//                TypedValue.COMPLEX_UNIT_PX,
+//                resources.getDimensionPixelSize(R.dimen.sp_26).toFloat()
+//            )
 
             try {
                 val mCursorDrawableRes = TextView::class.java.getDeclaredField("mCursorDrawableRes")
