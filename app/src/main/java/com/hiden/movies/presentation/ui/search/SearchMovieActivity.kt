@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.activity_search_movie.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class SearchMovieActivity : AppActivity(), SearchMovieAdapter.Delegate {
+class SearchMovieActivity : AppActivity(R.layout.activity_search_movie), SearchMovieAdapter.Delegate {
 
 
     @Inject lateinit var detailScreenNavigator: DetailScreenNavigator
@@ -30,7 +30,6 @@ class SearchMovieActivity : AppActivity(), SearchMovieAdapter.Delegate {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_search_movie)
         setupSearchView()
         setupSearchList()
 

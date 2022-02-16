@@ -122,24 +122,25 @@ class MainActivity: AppActivity(R.layout.activity_main), MoviesAdapter.Delegate 
     }
 
     private fun loadDiscoverContents(result: Result<List<MovieDataView>>?){
-        if(result == null) return
-        result.onSuccess {
-            discoverMoviesAdapter.setItems(it)
-        }
+
+        requireNotNull(result)
+            .onSuccess { discoverMoviesAdapter.setItems(it)  }
+            .onFailure {  } //TODO handle error state
+
     }
 
     private fun loadTopRatedContents(result: Result<List<MovieDataView>>?){
-        if(result == null) return
-        result.onSuccess {
-            moviesAdapter.setItems(it)
-        }
+
+        requireNotNull(result)
+            .onSuccess { moviesAdapter.setItems(it) }
+            .onFailure {  } //TODO handle error state
     }
 
     private fun loadUpcomingContents(result: Result<List<MovieDataView>>?){
-        if(result == null) return
-        result.onSuccess {
-            upcomingMoviesAdapter.setItems(it)
-        }
+
+        requireNotNull(result)
+            .onSuccess { upcomingMoviesAdapter.setItems(it) }
+            .onFailure {  } //TODO handle error state
     }
 
 
