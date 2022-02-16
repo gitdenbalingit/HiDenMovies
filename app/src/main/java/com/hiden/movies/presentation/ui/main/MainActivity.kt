@@ -5,14 +5,13 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
 import com.hiden.movies.R
 import com.hiden.movies.data.di.GlideApp
 import com.hiden.movies.presentation.AppActivity
 import com.hiden.movies.presentation.util.IMAGE_BASE_URL_780
 import com.hiden.movies.presentation.common.adapter.MoviesAdapter
 import com.hiden.movies.presentation.common.ext.observe
-import com.hiden.movies.presentation.common.ext.withViewModel
 import com.hiden.movies.presentation.common.rx.RxAppBar
 import com.hiden.movies.presentation.common.rx.RxRecyclerView
 import com.hiden.movies.presentation.model.MovieDataView
@@ -24,10 +23,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.intentFor
 import javax.inject.Inject
 
-class MainActivity: AppActivity(), MoviesAdapter.Delegate {
+class MainActivity: AppActivity(R.layout.activity_main), MoviesAdapter.Delegate {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
     @Inject lateinit var detailScreenNavigator: DetailScreenNavigator
 
     @Inject lateinit var moviesAdapter: MoviesAdapter
@@ -35,10 +32,11 @@ class MainActivity: AppActivity(), MoviesAdapter.Delegate {
     @Inject lateinit var discoverMoviesAdapter: MoviesAdapter
     @Inject lateinit var upcomingMoviesAdapter: MoviesAdapter
 
+    private val viewModel: MainActivityViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         setView()
         loadContents()
         observeViewModel()
@@ -47,7 +45,7 @@ class MainActivity: AppActivity(), MoviesAdapter.Delegate {
     }
 
     private fun loadContents(){
-        withViewModel<MainActivityViewModel>(viewModelFactory) {
+        with(viewModel){
             loadNowShowingMovie()
             loadTopRatedMovies()
             loadDiscoverMovies()
@@ -56,7 +54,7 @@ class MainActivity: AppActivity(), MoviesAdapter.Delegate {
     }
 
     private fun observeViewModel(){
-        withViewModel<MainActivityViewModel>(viewModelFactory) {
+        with(viewModel) {
             observe(converItem, ::displayCoverImage)
             observe(topRatedList, ::loadTopRatedContents)
             observe(discoverList, ::loadDiscoverContents)
@@ -124,24 +122,25 @@ class MainActivity: AppActivity(), MoviesAdapter.Delegate {
     }
 
     private fun loadDiscoverContents(result: Result<List<MovieDataView>>?){
-        if(result == null) return
-        result.onSuccess {
-            discoverMoviesAdapter.setItems(it)
-        }
+
+        requireNotNull(result)
+            .onSuccess { discoverMoviesAdapter.setItems(it)  }
+            .onFailure {  } //TODO handle error state
+
     }
 
     private fun loadTopRatedContents(result: Result<List<MovieDataView>>?){
-        if(result == null) return
-        result.onSuccess {
-            moviesAdapter.setItems(it)
-        }
+
+        requireNotNull(result)
+            .onSuccess { moviesAdapter.setItems(it) }
+            .onFailure {  } //TODO handle error state
     }
 
     private fun loadUpcomingContents(result: Result<List<MovieDataView>>?){
-        if(result == null) return
-        result.onSuccess {
-            upcomingMoviesAdapter.setItems(it)
-        }
+
+        requireNotNull(result)
+            .onSuccess { upcomingMoviesAdapter.setItems(it) }
+            .onFailure {  } //TODO handle error state
     }
 
 

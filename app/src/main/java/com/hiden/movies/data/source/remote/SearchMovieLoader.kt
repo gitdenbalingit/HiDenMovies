@@ -1,6 +1,5 @@
 package com.hiden.movies.data.source.remote
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
@@ -10,7 +9,10 @@ import com.hiden.movies.domain.params.SearchMovieParam
 import com.hiden.movies.presentation.model.State
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.Action
+import io.reactivex.rxkotlin.addTo
+import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 
 
@@ -21,36 +23,47 @@ class SearchMovieLoader(
 
     val state: MutableLiveData<State> = MutableLiveData()
     private var retryCompletable: Completable? = null
+    private val disposables = CompositeDisposable()
+
+    init {
+        addInvalidatedCallback {
+            disposables.dispose()
+        }
+    }
 
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, MovieResponse>) {
         searchMovieWithPageUseCase
-           .getObservable(SearchMovieParam(query,1))
-           .subscribe(
-               {
-                   updateState(State.DONE)
+            .invoke(SearchMovieParam(query,1))
+            .doOnSubscribe { updateState(State.LOADING) }
+            .subscribeBy(
+                onSuccess = {
+                    updateState(State.DONE)
                    callback.onResult(it, null, 2)
-               },
-               {
-                   updateState(State.ERROR)
+                },
+                onError = {
+                    updateState(State.ERROR)
                    setRetry(Action { loadInitial(params, callback) })
-               }
-           )
+                }
+            )
+            .addTo(disposables)
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, MovieResponse>) {
         updateState(State.LOADING)
         searchMovieWithPageUseCase
-            .getObservable(SearchMovieParam(query,params.key))
-            .subscribe(
-                {
+            .invoke(SearchMovieParam(query,params.key))
+            .doOnSubscribe { updateState(State.LOADING) }
+            .subscribeBy(
+                onSuccess = {
                     updateState(State.DONE)
-                    callback.onResult(it,params.key + 1)
+                    callback.onResult(it, params.key + 1)
                 },
-                {
+                onError = {
                     updateState(State.ERROR)
                     setRetry(Action { loadAfter(params, callback) })
                 }
             )
+            .addTo(disposables)
     }
 
     override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, MovieResponse>) {

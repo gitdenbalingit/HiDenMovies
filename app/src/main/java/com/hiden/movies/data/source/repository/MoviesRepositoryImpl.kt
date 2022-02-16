@@ -13,26 +13,36 @@ class MoviesRepositoryImpl @Inject constructor(
 ): MoviesRepository {
 
    override fun searchMovie(query: String): Single<PagedResponse<MovieResponse>> =
-            requireNotNull(query).run(remoteMoviesDataSource::searchMovie)
+            query.run(remoteMoviesDataSource::searchMovie)
 
-    override fun searchMovieWithPage(query: String, page: Int): Single<PagedResponse<MovieResponse>> =
-            remoteMoviesDataSource.searchMovieWithPage(query, page)
+    override fun searchMovieWithPage(query: String, page: Int): Single<List<MovieResponse>> =
+            remoteMoviesDataSource
+                .searchMovieWithPage(query, page)
+                .map { it.results }
 
     override fun loadMovieDetail(movieId: Int): Single<MovieDetailResponse> =
-            requireNotNull(movieId).run(remoteMoviesDataSource::loadMovieDetail)
+            movieId.run(remoteMoviesDataSource::loadMovieDetail)
 
     override fun searchTVShow(query: String): Single<PagedResponse<TVShowResponse>> =
-            requireNotNull(query).run(remoteMoviesDataSource::searchTVShow)
+            query.run(remoteMoviesDataSource::searchTVShow)
 
-    override fun discoverMovies(): Single<PagedResponse<MovieResponse>> =
-            remoteMoviesDataSource.discoverMovies()
+    override fun discoverMovies(): Single<List<MovieResponse>> =
+            remoteMoviesDataSource
+                .discoverMovies()
+                .map { it.results }
 
-    override fun topRatedMovies(): Single<PagedResponse<MovieResponse>> =
-            remoteMoviesDataSource.topRatedMovies()
+    override fun topRatedMovies(): Single<List<MovieResponse>> =
+            remoteMoviesDataSource
+                .topRatedMovies()
+                .map { it.results }
 
-    override fun nowShowingMovies(): Single<PagedResponse<MovieResponse>> =
-            remoteMoviesDataSource.noShowingMovies()
+    override fun nowShowingMovies(): Single<List<MovieResponse>> =
+            remoteMoviesDataSource
+                .noShowingMovies()
+                .map { it.results }
 
-    override fun upcomingMovies(): Single<PagedResponse<MovieResponse>> =
-            remoteMoviesDataSource.upcomingMovies()
+    override fun upcomingMovies(): Single<List<MovieResponse>> =
+            remoteMoviesDataSource
+                .upcomingMovies()
+                .map { it.results }
 }

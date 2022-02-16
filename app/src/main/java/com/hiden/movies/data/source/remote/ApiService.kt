@@ -8,10 +8,6 @@ import retrofit2.http.Query
 
 interface ApiService {
 
-    /***
-     *
-     * HMLET
-     */
     @GET("search/movie")
     fun searchMovie(
         @Query("query") query: String,

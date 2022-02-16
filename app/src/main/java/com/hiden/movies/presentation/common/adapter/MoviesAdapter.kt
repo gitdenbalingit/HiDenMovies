@@ -13,7 +13,7 @@ class MoviesAdapter @Inject constructor(
 ) : RecyclerView.Adapter<BindingViewHolder<MovieDataView>>() {
 
     interface Delegate {
-        fun onMovieItemClicked(movieResponse: MovieDataView)
+        fun onMovieItemClicked(movieDataView: MovieDataView)
     }
 
     private val items = mutableListOf<MovieDataView>()

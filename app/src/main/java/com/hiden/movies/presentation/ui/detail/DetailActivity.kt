@@ -2,7 +2,7 @@ package com.hiden.movies.presentation.ui.detail
 
 import android.os.Bundle
 import android.view.WindowManager
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
 import com.hiden.movies.R
 import com.hiden.movies.data.di.GlideApp
 import com.hiden.movies.data.entity.Mapper.toDataView
@@ -11,7 +11,6 @@ import com.hiden.movies.presentation.util.IMAGE_BASE_URL_500
 import com.hiden.movies.presentation.util.IMAGE_BASE_URL_780
 import com.hiden.movies.presentation.common.adapter.MoviesAdapter
 import com.hiden.movies.presentation.common.ext.observe
-import com.hiden.movies.presentation.common.ext.withViewModel
 import com.hiden.movies.presentation.model.MovieDataView
 import com.hiden.movies.presentation.model.MovieDetailView
 import com.hiden.movies.presentation.navigation.DetailScreenNavigator
@@ -19,14 +18,16 @@ import kotlinx.android.synthetic.main.activity_detail.*
 import java.text.DecimalFormat
 import javax.inject.Inject
 
-class DetailActivity: AppActivity(), MoviesAdapter.Delegate {
+class DetailActivity: AppActivity(R.layout.activity_detail), MoviesAdapter.Delegate {
 
     companion object {
         const val KEY_MOVIE_ID = "DetailActivity.movie-id"
     }
-    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+
     @Inject lateinit var similarMoviesAdapter: MoviesAdapter
     @Inject lateinit var detailScreenNavigator: DetailScreenNavigator
+    private val viewModel: DetailActivityViewModel by viewModels()
+
 
 
     private val movieId by lazy { intent.getIntExtra(KEY_MOVIE_ID, 0) }
@@ -37,7 +38,6 @@ class DetailActivity: AppActivity(), MoviesAdapter.Delegate {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail)
         loadMovieDetail()
         observerViewModel()
 
@@ -47,13 +47,13 @@ class DetailActivity: AppActivity(), MoviesAdapter.Delegate {
 
 
     private fun loadMovieDetail(){
-        withViewModel<DetailActivityViewModel>(viewModelFactory) {
+        with(viewModel) {
             loadMovieDetail(movieId)
         }
     }
 
     private fun observerViewModel(){
-        withViewModel<DetailActivityViewModel>(viewModelFactory) {
+        with(viewModel) {
             observe(movieData, ::loadContents)
         }
     }
@@ -71,8 +71,8 @@ class DetailActivity: AppActivity(), MoviesAdapter.Delegate {
     }
 
     private fun setView(data: MovieDetailView){
-        val runtime_hr = (data.runtime!! /60).toString() + "h"
-        val runtime_mins = (data.runtime!!%60).toString() +"m"
+        val runtimeHr = data.runtime.toString() + "h"
+        val runtimeMins = (data.runtime?.rem(60)).toString() +"m"
 
         similarRecycler.isNestedScrollingEnabled = false
         similarRecycler.apply {
@@ -93,7 +93,7 @@ class DetailActivity: AppActivity(), MoviesAdapter.Delegate {
         vote_count.text = "Votes: " +data.voteCount
         release_date.text = data.releaseDate.take(4)
         language.text = data.originalLanguage.toUpperCase()
-        running_time.text = "$runtime_hr $runtime_mins"
+        running_time.text = "$runtimeHr $runtimeMins"
         movie_status.text = data.status
         overview.text = data.overview
         genre_values.text = data.genres.map { it.name }.toList().joinToString(separator = ", ")

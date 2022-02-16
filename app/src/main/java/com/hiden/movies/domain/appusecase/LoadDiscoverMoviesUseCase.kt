@@ -1,25 +1,24 @@
 package com.hiden.movies.domain.appusecase
 
 import com.hiden.movies.data.entity.Mapper.toDataView
-import com.hiden.movies.data.entity.MovieResponse
 import com.hiden.movies.data.source.repository.MoviesRepository
-import com.hiden.movies.domain.baseusecase.NewSingleUseCase
-import com.hiden.movies.presentation.common.arch.PostExecutionThread
 import com.hiden.movies.presentation.common.arch.ThreadExecutor
 import com.hiden.movies.presentation.model.MovieDataView
 import io.reactivex.Single
-import io.reactivex.rxkotlin.toFlowable
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
+
 
 class LoadDiscoverMoviesUseCase @Inject constructor(
     private val moviesRepository: MoviesRepository,
-    threadExecutor: ThreadExecutor,
-    postExecutionThread: PostExecutionThread
-) : NewSingleUseCase<Any?, List<MovieDataView>>(threadExecutor, postExecutionThread) {
+    private val threadExecutor: ThreadExecutor
+) {
+    operator fun invoke(): Single<List<MovieDataView>> {
+       return moviesRepository
+            .discoverMovies()
+            .map { it.map { item -> item.toDataView() } }
+            .subscribeOn(Schedulers.from(threadExecutor))
+            .doOnError { it.printStackTrace() }
 
-    override fun buildUseCaseSingle(params: Any?): Single<List<MovieDataView>> =
-        moviesRepository.discoverMovies().map { it.results }.flatMap {
-            it.map { it.toDataView() }.toFlowable().toList()
-        }
-
+    }
 }
