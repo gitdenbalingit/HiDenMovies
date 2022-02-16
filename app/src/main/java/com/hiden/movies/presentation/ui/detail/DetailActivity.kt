@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_detail.*
 import java.text.DecimalFormat
 import javax.inject.Inject
 
-class DetailActivity: AppActivity(), MoviesAdapter.Delegate {
+class DetailActivity: AppActivity(R.layout.activity_detail), MoviesAdapter.Delegate {
 
     companion object {
         const val KEY_MOVIE_ID = "DetailActivity.movie-id"
@@ -38,7 +38,6 @@ class DetailActivity: AppActivity(), MoviesAdapter.Delegate {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail)
         loadMovieDetail()
         observerViewModel()
 
